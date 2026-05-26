@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Honors Precalculus · Tutoring Schedule</title>
+<script src="sessions.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
 
@@ -702,6 +703,32 @@
     background: var(--purple);
     border-radius: 2px;
     transition: width 0.3s;
+  }
+
+  /* ── Completed session card ── */
+  .session-card.done-card {
+    opacity: 0.38;
+    filter: grayscale(0.4);
+  }
+
+  .session-card.done-card:hover {
+    opacity: 0.6;
+    filter: grayscale(0.2);
+  }
+
+  .session-card.done-card .card-title {
+    text-decoration: line-through;
+    color: var(--ink-3);
+  }
+
+  .done-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--bg-3);
+    color: var(--ink-4);
+    white-space: nowrap;
   }
 
   /* ── Scrollbar ── */
