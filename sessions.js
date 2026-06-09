@@ -12,7 +12,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 4, date: "Tue Jun 2", label: "1.3 · 1.4 Trig Wrap-Up", unit: "Unit 1: Intro to Trig",
+    num: 4, date: "Tue Jun 2", label: "1.4 Trig Wrap-Up", unit: "Unit 1: Intro to Trig",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -28,7 +28,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 8, date: "Thu Jun 11", label: "2.4 · 2.5 Functions Wrap-Up", unit: "Unit 2: Trig Functions",
+    num: 8, date: "Thu Jun 11", label: "2.5 Functions Wrap-Up", unit: "Unit 2: Trig Functions",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -40,7 +40,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 11, date: "Thu Jun 18", label: "3.3 · 3.4 Working with Functions Wrap-Up", unit: "Unit 3: Working with Trig Functions",
+    num: 11, date: "Thu Jun 18", label: "3.4 Working with Functions Wrap-Up", unit: "Unit 3: Working with Trig Functions",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -52,7 +52,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 14, date: "Thu Jun 25", label: "4.3 · 4.4 Identities Wrap-Up", unit: "Unit 4: Trig Identities",
+    num: 14, date: "Thu Jun 25", label: "4.4 Identities Wrap-Up", unit: "Unit 4: Trig Identities",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -64,7 +64,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 17, date: "Thu Jul 2", label: "5.3 · 5.4 Applications Wrap-Up", unit: "Unit 5: Applications of Trig",
+    num: 17, date: "Thu Jul 2", label: "5.4 Applications Wrap-Up", unit: "Unit 5: Applications of Trig",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -84,7 +84,7 @@ const SESSIONS = [
     duration: 90, topics: [], hw: [], hw_duration: null, type: "new"
   },
   {
-    num: 22, date: "Tue Jul 14", label: "6.5 · 6.6 Complex Numbers Wrap-Up", unit: "Unit 6: Complex Numbers",
+    num: 22, date: "Tue Jul 14", label: "6.6 Complex Numbers Wrap-Up", unit: "Unit 6: Complex Numbers",
     duration: 90, topics: [], hw: [], hw_duration: null, type: "wrapup"
   },
   {
@@ -136,25 +136,25 @@ const SESSION_DATES = {
   "2026-05-26": { num: 1,  type: "review", label: "Semester 1 Review" },
   "2026-05-28": { num: 2,  type: "new",    label: "1.1 Right Triangles" },
   "2026-05-30": { num: 3,  type: "new",    label: "1.2 Angles and Radians" },
-  "2026-06-02": { num: 4,  type: "wrapup", label: "1.3 · 1.4 Trig Wrap-Up" },
+  "2026-06-02": { num: 4,  type: "wrapup", label: "1.4 Trig Wrap-Up" },
   "2026-06-04": { num: 5,  type: "new",    label: "2.1 Sine and Cosine Graphs" },
   "2026-06-06": { num: 6,  type: "new",    label: "2.2 Graphs of Other Trig Functions" },
   "2026-06-09": { num: 7,  type: "new",    label: "2.3 Simple Transformations of Sinusoids" },
-  "2026-06-11": { num: 8,  type: "wrapup", label: "2.4 · 2.5 Functions Wrap-Up" },
+  "2026-06-11": { num: 8,  type: "wrapup", label: "2.5 Functions Wrap-Up" },
   "2026-06-13": { num: 9,  type: "new",    label: "3.1 Inverse Trig Functions" },
   "2026-06-16": { num: 10, type: "new",    label: "3.2 Solving Trig Equations" },
-  "2026-06-18": { num: 11, type: "wrapup", label: "3.3 · 3.4 Working with Functions Wrap-Up" },
+  "2026-06-18": { num: 11, type: "wrapup", label: "3.4 Working with Functions Wrap-Up" },
   "2026-06-20": { num: 12, type: "new",    label: "4.1 Identities and Proof" },
   "2026-06-23": { num: 13, type: "new",    label: "4.2 Trig Identities" },
-  "2026-06-25": { num: 14, type: "wrapup", label: "4.3 · 4.4 Identities Wrap-Up" },
+  "2026-06-25": { num: 14, type: "wrapup", label: "4.4 Identities Wrap-Up" },
   "2026-06-27": { num: 15, type: "new",    label: "5.1 Law of Cosines" },
   "2026-06-30": { num: 16, type: "new",    label: "5.2 Law of Sines" },
-  "2026-07-02": { num: 17, type: "wrapup", label: "5.3 · 5.4 Applications Wrap-Up" },
+  "2026-07-02": { num: 17, type: "wrapup", label: "5.4 Applications Wrap-Up" },
   "2026-07-04": { num: 18, type: "new",    label: "6.1 Polar Coordinates" },
   "2026-07-07": { num: 19, type: "new",    label: "6.2 Graphs of Polar Functions" },
   "2026-07-09": { num: 20, type: "new",    label: "6.3 Polar Form of Complex Numbers" },
   "2026-07-11": { num: 21, type: "new",    label: "6.4 Arithmetic of Complex Numbers" },
-  "2026-07-14": { num: 22, type: "wrapup", label: "6.5 · 6.6 Complex Numbers Wrap-Up" },
+  "2026-07-14": { num: 22, type: "wrapup", label: "6.6 Complex Numbers Wrap-Up" },
   "2026-07-16": { num: 23, type: "prep",   label: "7.1 Preparing for the Semester Exam" },
   "2026-07-18": { num: 24, type: "prep",   label: "Exam" },
   "2026-07-21": { num: 25, type: "prep",   label: "Final Exam" },
