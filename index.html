@@ -244,6 +244,7 @@
 
   .type-new .session-num    { background: var(--purple-light); color: var(--purple); }
   .type-review .session-num { background: var(--bg-3); color: var(--ink-3); }
+  .type-wrapup .session-num { background: var(--purple-mid); color: var(--purple); }
   .type-checkpoint .session-num { background: #FFF3E0; color: #C65D00; }
   .type-flex .session-num   { background: var(--bg-3); color: var(--ink-3); }
   .type-prep .session-num   { background: var(--red-light); color: var(--red); }
@@ -293,6 +294,7 @@
 
   .badge-type-new         { background: var(--purple-light); color: var(--purple); }
   .badge-type-review      { background: var(--bg-3); color: var(--ink-3); }
+  .badge-type-wrapup      { background: var(--purple-mid); color: var(--purple); }
   .badge-type-checkpoint  { background: #FFF3E0; color: #C65D00; }
   .badge-type-flex        { background: var(--bg-3); color: var(--ink-3); }
   .badge-type-prep        { background: var(--red-light); color: var(--red); }
@@ -466,6 +468,7 @@
 
   .cal-day.session-new    { background: var(--purple-light); color: var(--purple); font-weight: 600; cursor: pointer; }
   .cal-day.session-review { background: var(--bg-3); color: var(--ink-2); font-weight: 600; cursor: pointer; }
+  .cal-day.session-wrapup { background: var(--purple-mid); color: var(--purple); font-weight: 600; cursor: pointer; }
   .cal-day.session-checkpoint { background: #FFF3E0; color: #C65D00; font-weight: 600; cursor: pointer; }
   .cal-day.session-flex   { background: var(--bg-3); color: var(--ink-2); font-weight: 600; cursor: pointer; }
   .cal-day.session-prep   { background: var(--red-light); color: var(--red); font-weight: 600; cursor: pointer; }
@@ -490,6 +493,7 @@
 
   .session-new .cal-day-dot    { background: var(--purple); }
   .session-review .cal-day-dot { background: var(--ink-4); }
+  .session-wrapup .cal-day-dot { background: var(--purple); }
   .session-checkpoint .cal-day-dot { background: #C65D00; }
   .session-prep .cal-day-dot   { background: var(--red); }
 
@@ -731,6 +735,60 @@
     white-space: nowrap;
   }
 
+  /* ── Checklist inline confidence + notes inputs ── */
+  .conf-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: default;
+    flex-shrink: 0;
+  }
+
+  .conf-lbl {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-4);
+  }
+
+  .conf-input {
+    width: 42px;
+    padding: 3px 6px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: var(--font);
+    text-align: center;
+    outline: none;
+    background: var(--bg);
+    color: var(--ink);
+    -moz-appearance: textfield;
+  }
+
+  .conf-input::-webkit-inner-spin-button,
+  .conf-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+  .conf-input:focus { border-color: var(--purple); }
+
+  .notes-inline {
+    min-width: 80px;
+    max-width: 160px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: var(--font);
+    outline: none;
+    background: var(--bg);
+    color: var(--ink);
+    flex-shrink: 1;
+  }
+
+  .notes-inline::placeholder { color: var(--ink-4); }
+  .notes-inline:focus { border-color: var(--purple); }
+
   /* ── Scrollbar ── */
   ::-webkit-scrollbar { width: 0; }
 </style>
@@ -741,7 +799,7 @@
   <div class="header-top">
     <div>
       <div class="header-title">Honors Precalculus</div>
-      <div class="header-sub">24 sessions · May 26 – Jul 18 · 90 min each</div>
+      <div class="header-sub">25 sessions · May 26 – Jul 21 · 90 min each</div>
     </div>
     <div class="header-progress">
       <span class="header-progress-label" id="progress-text">0%</span>
@@ -766,15 +824,15 @@
     </div>
     <div class="overview-item">
       <span class="overview-item-label">End</span>
-      <span class="overview-item-value">Sat, Jul 18</span>
+      <span class="overview-item-value">Tue, Jul 21</span>
     </div>
     <div class="overview-item">
       <span class="overview-item-label">Sessions</span>
-      <span class="overview-item-value">24 sessions · 90 min each</span>
+      <span class="overview-item-value">25 sessions · 90 min each</span>
     </div>
     <div class="overview-item">
       <span class="overview-item-label">Content</span>
-      <span class="overview-item-value">Units 7–12 · ~56.7 hrs of material</span>
+      <span class="overview-item-value">Units 1–7 · Semester 2 Trig</span>
     </div>
     <div class="overview-item">
       <span class="overview-item-label">School starts</span>
@@ -927,7 +985,7 @@ renderCalendar();
 <div class="progress-bar-wrap">
   <div class="progress-bar-label">
     <span>Sessions completed</span>
-    <span id="cl-progress-label">0 / 24</span>
+    <span id="cl-progress-label">0 / 25</span>
   </div>
   <div class="progress-bar-track">
     <div class="progress-bar-fill" id="cl-progress-bar" style="width:0%"></div>
@@ -967,13 +1025,13 @@ function toggleDone(num){
 function updateProgress(){
   const done = getDone();
   const n = done.length;
-  const pct = Math.round(n/24*100);
+  const pct = Math.round(n/25*100);
   document.getElementById('progress-text').textContent = `${pct}%`;
   const fill = document.getElementById('header-progress-fill');
   if(fill) fill.style.width = pct+'%';
   const lbl = document.getElementById('cl-progress-label');
   const bar = document.getElementById('cl-progress-bar');
-  if(lbl) lbl.textContent = `${n} / 24`;
+  if(lbl) lbl.textContent = `${n} / 25`;
   if(bar) bar.style.width = pct+'%';
 }
 
@@ -987,6 +1045,8 @@ function renderChecklist(){
     group.nums.forEach(n=>{
       const s = SESSIONS[n-1];
       const isDone = done.includes(s.num);
+      const confVal = localStorage.getItem('conf_'+s.num) || '';
+      const notesVal = localStorage.getItem('notes_'+s.num) || '';
       html += `<div class="cl-item${isDone?' done':''}" onclick="toggleDone(${s.num})">
         <div class="cl-checkbox">
           ${isDone?`<svg class="cl-check-icon" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`:''}
@@ -997,6 +1057,17 @@ function renderChecklist(){
         </div>
         <div class="cl-item-right">
           <span class="cl-date-badge">${fmtDuration(s.duration)}</span>
+          <label class="conf-wrap" onclick="event.stopPropagation()">
+            <span class="conf-lbl">Conf</span>
+            <input type="number" class="conf-input" min="1" max="10"
+              value="${confVal}" placeholder="—"
+              onchange="localStorage.setItem('conf_${s.num}',this.value)"
+              onclick="event.stopPropagation()">
+          </label>
+          <input type="text" class="notes-inline" placeholder="Tutor notes…"
+            value="${notesVal}"
+            oninput="localStorage.setItem('notes_${s.num}',this.value)"
+            onclick="event.stopPropagation()">
         </div>
       </div>`;
     });
