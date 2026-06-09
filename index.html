@@ -858,8 +858,8 @@ function renderSchedule() {
   let html = '';
   const done = JSON.parse(localStorage.getItem('done_sessions') || '[]');
 
-  WEEKS.forEach(week => {
-    html += `<div class="week-divider"><span class="week-label">${week.label}</span><div class="week-line"></div></div>`;
+  WEEKS.forEach((week, idx) => {
+    html += `<div class="week-divider" id="week-${idx}"><span class="week-label">${week.label}</span><div class="week-line"></div></div>`;
     week.sessions.forEach(n => {
       const s = SESSIONS[n-1];
       const isDone = done.includes(s.num);
@@ -907,7 +907,23 @@ function toggleCard(num) {
   card.classList.toggle('open');
 }
 
+function scrollToCurrentWeek() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  let targetIdx = 0;
+  WEEKS.forEach((week, idx) => {
+    const dateKey = Object.keys(SESSION_DATES).find(d => SESSION_DATES[d].num === week.sessions[0]);
+    if (dateKey && new Date(dateKey) <= today) targetIdx = idx;
+  });
+  const el = document.getElementById('week-' + targetIdx);
+  if (!el) return;
+  const headerH = document.querySelector('.header').offsetHeight;
+  const y = el.getBoundingClientRect().top + window.scrollY - headerH - 8;
+  window.scrollTo({ top: Math.max(0, y), behavior: 'instant' });
+}
+
 renderSchedule();
+scrollToCurrentWeek();
 </script>
 </div>
 </div>
